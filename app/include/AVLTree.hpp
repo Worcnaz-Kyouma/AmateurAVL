@@ -1,14 +1,14 @@
 #ifndef AVL_AVLTREE_H
 #define AVL_AVLTREE_H
 
-#include "Node.hpp"
 #include <optional>
 #include <memory>
+#include <string>
 
 class AVLTree {
 private:
     int height = 0;
-    Node root(nullptr);
+    std::unique_ptr<int> root = nullptr;
 
     AVLTree* parent;
     AVLTree* rChild = nullptr;
@@ -24,13 +24,14 @@ private:
     void rotateRight();
 public:
     AVLTree(AVLTree* parent);
-    ~AVLTree();
 
-    AVLTree getAVLTree(int value);
+    static AVLTree* createNewAVLTree(int value);
+
+    AVLTree* getAVLTree(int value);
     void insert(int value);
     bool hasValue(int value);
 
     void prompt(const std::string& mode);
-}
+};
 
 #endif
