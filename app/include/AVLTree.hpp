@@ -14,15 +14,6 @@ private:
     AVLTree* rChild = nullptr;
     AVLTree* lChild = nullptr;
 
-public:
-    AVLTree(AVLTree* parent);
-    ~AVLTree();
-
-    AVLTree getAVLTree(int value);
-    void insert(int value);
-    bool hasValue(int value);
-
-    void prompt();
     void promptInOrder();
     void promptPreOrder();
     void promptPosOrder();
@@ -31,6 +22,15 @@ public:
     void rotateTree();
     void rotateLeft();
     void rotateRight();
+public:
+    AVLTree(AVLTree* parent);
+    ~AVLTree();
+
+    AVLTree getAVLTree(int value);
+    void insert(int value);
+    bool hasValue(int value);
+
+    void prompt(const std::string& mode);
 }
 
 #endif
