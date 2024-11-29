@@ -76,18 +76,15 @@ void AVLTree::rotateLeft() {
     AVLTree* newParent = this->rChild;
     AVLTree* newParentOldLChild = newParent->lChild;
 
-    // GrandParent connections
     newParent->parent = grandParent;
     if(grandParent != nullptr) {
         if(grandParent->lChild == this) grandParent->lChild = newParent;
         else grandParent->rChild = newParent;
     }
 
-    // NewParent conection to Old Parent(this)
     this->parent = newParent;
     newParent->lChild = this;
 
-    // Old Parent receives old left child of new parent on right
     this->rChild = newParentOldLChild;
     newParentOldLChild->parent = this;
 
@@ -100,18 +97,15 @@ void AVLTree::rotateRight() {
     AVLTree* newParent = this->lChild;
     AVLTree* newParentOldRChild = newParent->rChild;
 
-    // GrandParent connections
     newParent->parent = grandParent;
     if(grandParent != nullptr) {
         if(grandParent->lChild == this) grandParent->lChild = newParent;
         else grandParent->rChild = newParent;
     }
 
-    // NewParent conection to Old Parent(this)
     this->parent = newParent;
     newParent->rChild = this;
 
-    // Old Parent receives old right child of new parent on left
     this->lChild = newParentOldRChild;
     newParentOldRChild->parent = this;
 
