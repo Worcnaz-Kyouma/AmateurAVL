@@ -91,7 +91,6 @@ void AVLTree::rotateLeft() {
     this->rChild = newParentOldLChild;
     newParentOldLChild->parent = this;
 
-    // Everyones Resets height
     this->parent->height = 0;
     this->height = 0;
 }
@@ -116,7 +115,6 @@ void AVLTree::rotateRight() {
     this->lChild = newParentOldRChild;
     newParentOldRChild->parent = this;
 
-    // Everyones Resets height
     this->parent->height = 0;
     this->height = 0;
 }
