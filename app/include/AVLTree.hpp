@@ -27,8 +27,9 @@ public:
 
     static AVLTree* createNewAVLTree(int value);
 
+    AVLTree* getRoot();
     AVLTree* getAVLTree(int value);
-    void insert(int value);
+    AVLTree* insert(int value); // can retun new root
     bool hasValue(int value);
 
     void prompt(const std::string& mode);
