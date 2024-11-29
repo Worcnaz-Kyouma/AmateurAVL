@@ -74,7 +74,7 @@ void AVLTree::rotateTree() {
 void AVLTree::rotateLeft() {
     AVLTree* grandParent = this->parent;
     AVLTree* newParent = this->rChild;
-    AVLTree* emptyLeftTree = newParent->lChild;
+    AVLTree* newParentOldLChild = newParent->lChild;
 
     // GrandParent connections
     newParent->parent = grandParent;
@@ -87,10 +87,9 @@ void AVLTree::rotateLeft() {
     this->parent = newParent;
     newParent->lChild = this;
 
-    // Old Parent receives new empty tree on right and the old empty tree of New Parent in left
-    this->rChild = new AVLTree(this);
-    this->lChild = emptyLeftTree;
-    emptyLeftTree->parent = this;
+    // Old Parent receives old left child of new parent on right
+    this->rChild = newParentOldLChild;
+    newParentOldLChild->parent = this;
 
     // Everyones Resets height
     this->parent->height = 0;
@@ -100,7 +99,7 @@ void AVLTree::rotateLeft() {
 void AVLTree::rotateRight() {
     AVLTree* grandParent = this->parent;
     AVLTree* newParent = this->lChild;
-    AVLTree* emptyRightTree = newParent->rChild;
+    AVLTree* newParentOldRChild = newParent->rChild;
 
     // GrandParent connections
     newParent->parent = grandParent;
@@ -113,10 +112,9 @@ void AVLTree::rotateRight() {
     this->parent = newParent;
     newParent->rChild = this;
 
-    // Old Parent receives new empty tree on left and the old empty tree of New Parent in right
-    this->rChild = emptyRightTree;
-    emptyRightTree->parent = this;
-    this->lChild = new AVLTree(this);
+    // Old Parent receives old right child of new parent on left
+    this->lChild = newParentOldRChild;
+    newParentOldRChild->parent = this;
 
     // Everyones Resets height
     this->parent->height = 0;

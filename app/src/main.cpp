@@ -15,8 +15,8 @@ int main() {
 
     // Prompting tree traversals to check if the structure is correct
     tree->prompt("IN_ORDER");
-    //tree->prompt("PRE_ORDER");
-    //tree->prompt("POS_ORDER");
+    tree->prompt("PRE_ORDER");
+    tree->prompt("POS_ORDER");
 
     return 0;
 }
